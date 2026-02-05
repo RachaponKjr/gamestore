@@ -49,9 +49,9 @@ const TopUpPage = () => {
 
   return (
     <LayoutSection>
-      <div className="container mx-auto max-w-7xl py-6 px-4 text-[#0b0c2a]">
+      <div className="container mx-auto max-w-7xl py-6 px-4 text-[#0b0c2a] flex">
         {/* --- 1. Game Header Section --- */}
-        <div className="flex flex-col md:flex-row items-center md:items-end gap-6 mb-10 bg-gradient-to-r from-[#0b0c2a] to-[#1a1c4e] p-8 rounded-[2.5rem] text-white overflow-hidden relative">
+        <div className="flex flex-col md:flex-row items-center md:items-end gap-6 mb-6 md:mb-10 bg-gradient-to-r from-[#0b0c2a] to-[#1a1c4e] p-8 rounded-[2.5rem] text-white overflow-hidden relative">
           <div className="absolute top-0 right-0 opacity-10 translate-x-10 -translate-y-10">
             <Icon icon="mdi:controller" width={300} />
           </div>
