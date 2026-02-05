@@ -121,7 +121,7 @@ const TopUpPage = () => {
                     <Icon
                       icon="twemoji:gem-stone"
                       width={40}
-                      className="mb-2 group-hover:scale-110 transition-transform"
+                      className="md:mb-2 group-hover:scale-110 transition-transform"
                     />
                     <span className="text-xl font-black text-[#0b0c2a]">
                       {pack.amount.toLocaleString()}
@@ -130,7 +130,7 @@ const TopUpPage = () => {
                       +{pack.bonus} Bonus
                     </span>
                     <div
-                      className={`mt-3 w-full text-center py-2 rounded-xl font-bold text-sm ${selectedPack?.id === pack.id ? "bg-[#e53637] text-white" : "bg-gray-100 text-gray-600"}`}
+                      className={`md:mt-3 w-full text-center py-2 rounded-xl font-bold text-sm ${selectedPack?.id === pack.id ? "bg-[#e53637] text-white" : "bg-gray-100 text-gray-600"}`}
                     >
                       ฿{pack.price}
                     </div>
