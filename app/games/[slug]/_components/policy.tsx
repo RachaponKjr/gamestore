@@ -3,7 +3,7 @@ import React from "react";
 
 const Policy = () => {
   return (
-    <section className="mt-4 md:mt-12 bg-gray-50 rounded-[2rem] p-4 md:p-8 border border-gray-100">
+    <section className="mt-4 md:mt-12 bg-gray-50 rounded-[2rem] p-6 md:p-8 border border-gray-100">
       <div className="flex items-center gap-3 mb-6">
         <Icon
           icon="fluent:document-protect-24-filled"
@@ -25,8 +25,7 @@ const Policy = () => {
             <li className="flex gap-2">
               <span className="font-bold text-[#0b0c2a]">1.</span>
               <span>
-                ตรวจสอบ <strong>UUID</strong> และ <strong>Server</strong>{" "}
-                ให้ถูกต้องก่อนยืนยัน
+                ตรวจสอบ <strong>UUID</strong> ให้ถูกต้องก่อนยืนยัน
               </span>
             </li>
             <li className="flex gap-2">
@@ -52,7 +51,7 @@ const Policy = () => {
               <Icon
                 icon="mdi:check-circle"
                 width={20}
-                className="text-green-500 mt-0.5"
+                className="text-green-500 mt-0.5 min-w-4 min-h-4 max-w-4 max-h-4"
               />
               <span>
                 สินค้าประเภท Digital Code/Top-up
@@ -63,7 +62,7 @@ const Policy = () => {
               <Icon
                 icon="mdi:check-circle"
                 width={20}
-                className="text-green-500 mt-0.5"
+                className="text-green-500 mt-0.5 min-w-4 min-h-4 max-w-4 max-h-4"
               />
               <span>หากกรอก UUID ผิด ทางร้านไม่สามารถดึงยอดเงินคืนให้ได้</span>
             </li>
@@ -71,7 +70,7 @@ const Policy = () => {
               <Icon
                 icon="mdi:check-circle"
                 width={20}
-                className="text-green-500 mt-0.5"
+                className="text-green-500 mt-0.5 min-w-4 min-h-4 max-w-4 max-h-4"
               />
               <span>
                 กรณีมีปัญหา ติดต่อแอดมินได้ตลอด 24 ชม. พร้อมแนบหลักฐานการโอน
@@ -82,10 +81,10 @@ const Policy = () => {
       </div>
 
       {/* คำเตือนด้านล่างสุด */}
-      <div className="mt-8 p-4 bg-white rounded-xl border-l-4 border-yellow-400 flex items-center gap-4">
+      <div className="mt-8 p-4 bg-white rounded-xl border-l-4 border-yellow-400 flex items-start gap-4">
         <Icon
           icon="mdi:shield-alert"
-          className="text-yellow-500 min-w-max"
+          className="text-yellow-500 min-w-4 min-h-4"
           width={32}
         />
         <p className="text-xs text-gray-500 leading-relaxed">

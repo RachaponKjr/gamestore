@@ -3,6 +3,7 @@ import LayoutSection from "@/components/layout/layout-section";
 import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import Policy from "./policy";
+import Image from "next/image";
 
 interface Pack {
   id: number;
@@ -48,18 +49,19 @@ const TopUpPage = () => {
   ];
 
   return (
-    <LayoutSection>
-      <div className="container mx-auto max-w-7xl py-6 px-4 text-[#0b0c2a] flex">
+    <LayoutSection video={"/mlbb.mp4"}>
+      <div className="container mx-auto max-w-7xl py-6 px-4 text-[#0b0c2a]">
         {/* --- 1. Game Header Section --- */}
         <div className="flex flex-col md:flex-row items-center md:items-end gap-6 mb-6 md:mb-10 bg-gradient-to-r from-[#0b0c2a] to-[#1a1c4e] p-8 rounded-[2.5rem] text-white overflow-hidden relative">
           <div className="absolute top-0 right-0 opacity-10 translate-x-10 -translate-y-10">
             <Icon icon="mdi:controller" width={300} />
           </div>
 
-          <div className="w-32 h-32 md:w-40 md:h-40 rounded-3xl overflow-hidden border-4 border-white/20 shadow-md z-10">
-            <img
-              src="https://play-lh.googleusercontent.com/I9K9H3AnI3u4V-H5eE4pG7S8S6Z5M1O1M8N-L-Q-Z-Y-S-E-Y-S-E"
+          <div className="w-32 h-32 relative md:w-40 md:h-40 rounded-3xl overflow-hidden border-4 border-white/20 shadow-md z-10">
+            <Image
+              src=""
               alt="Game Logo"
+              fill
               className="w-full h-full object-cover"
             />
           </div>
@@ -76,7 +78,7 @@ const TopUpPage = () => {
               </div>
             </div>
             <h1 className="text-4xl md:text-5xl font-black italic tracking-tighter">
-              GENSHIN IMPACT
+              Mobile Legends: Bang Bang
             </h1>
             <p className="text-white/60 mt-2 flex items-center justify-center md:justify-start gap-4">
               <span className="flex items-center gap-1">
@@ -91,7 +93,7 @@ const TopUpPage = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 md:gap-8">
           {/* --- ฝั่งซ้าย: เลือกแพ็กเกจ (8/12) --- */}
           <div className="lg:col-span-8 space-y-8">
             <section>
