@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#ffffff] border-t border-gray-100 pt-16 pb-8 mt-12">
+    <footer className="bg-[#ffffff] border-t border-gray-100 pt-16 pb-8">
       <div className="container mx-auto px-4 lg:px-0">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* 1. Brand Section */}
@@ -45,55 +45,57 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* 2. Quick Links */}
-          <div>
-            <h4 className="text-lg font-bold text-[#0b0c2a] mb-6 uppercase tracking-wider">
-              Navigation
-            </h4>
-            <ul className="space-y-4">
-              {["Home", "Game Store", "Top Up", "Our Blog", "Contacts"].map(
-                (item) => (
-                  <li key={item}>
-                    <Link
-                      href="#"
-                      className="text-gray-500 hover:text-[#e53637] transition flex items-center gap-2 group"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#e53637] opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                      {item}
-                    </Link>
-                  </li>
-                ),
-              )}
-            </ul>
-          </div>
+          <div className="grid grid-cols-2 gap-4">
+            {/* 2. Quick Links */}
+            <div>
+              <h4 className="text-lg font-bold text-[#0b0c2a] mb-6 uppercase tracking-wider">
+                Navigation
+              </h4>
+              <ul className="space-y-4">
+                {["Home", "Game Store", "Top Up", "Our Blog", "Contacts"].map(
+                  (item) => (
+                    <li key={item}>
+                      <Link
+                        href="#"
+                        className="text-gray-500 hover:text-[#e53637] transition flex items-center gap-2 group"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#e53637] opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                        {item}
+                      </Link>
+                    </li>
+                  ),
+                )}
+              </ul>
+            </div>
 
-          {/* 3. Support & Legal */}
-          <div>
-            <h4 className="text-lg font-bold text-[#0b0c2a] mb-6 uppercase tracking-wider">
-              Support
-            </h4>
-            <ul className="space-y-4 text-gray-500">
-              <li>
-                <Link href="#" className="hover:text-[#e53637] transition">
-                  Help Center
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-[#e53637] transition">
-                  Terms of Service
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-[#e53637] transition">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-[#e53637] transition">
-                  Refund Policy
-                </Link>
-              </li>
-            </ul>
+            {/* 3. Support & Legal */}
+            <div>
+              <h4 className="text-lg font-bold text-[#0b0c2a] mb-6 uppercase tracking-wider">
+                Support
+              </h4>
+              <ul className="space-y-4 text-gray-500">
+                <li>
+                  <Link href="#" className="hover:text-[#e53637] transition">
+                    Help Center
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-[#e53637] transition">
+                    Terms of Service
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-[#e53637] transition">
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="hover:text-[#e53637] transition">
+                    Refund Policy
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* 4. Newsletter */}

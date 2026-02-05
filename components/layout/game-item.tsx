@@ -1,9 +1,16 @@
+import Image from "next/image";
 import React from "react";
+import mlbb from "@/assets/images/mlbb.jpg";
+import Link from "next/link";
 
 const GameItem = () => {
   return (
-    <div className="w-full aspect-12/16 bg-neutral-200 rounded-xl group relative flex">
-      <div className="relative  w-max bg-red-200 top-6 left-1/2 -translate-x-6">
+    <Link
+      href="/games/mlbb"
+      className="w-full aspect-12/16 bg-neutral-200 overflow-hidden rounded-xl group relative flex"
+    >
+      <Image src={mlbb.src} alt="" fill className="object-cover" />
+      <div className="relative  w-max top-6 left-1/2 -translate-x-6 shadow-2xl">
         <div className="absolute w-12 h-2.5 rounded-full bg-white"></div>
         <div className="absolute w-4 h-4 rounded-full bg-white -top-2 translate-x-1/2! left-2"></div>
       </div>
@@ -13,7 +20,7 @@ const GameItem = () => {
           Lorem, ipsum.
         </h5>
       </div>
-    </div>
+    </Link>
   );
 };
 
