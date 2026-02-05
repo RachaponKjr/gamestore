@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-100 transition-all duration-300 ${
+        className={`fixed top-0 border-b border-[#FFFFFF]/20 shadow-lg left-0 w-full z-100 transition-all duration-300 ${
           scrolled
             ? "bg-[#0b0c2a]/95 backdrop-blur-md shadow-lg"
             : "bg-[#0b0c2a]"
@@ -42,7 +42,7 @@ const Navbar = () => {
         </div>
         <div className="container mx-auto max-w-7xl flex items-center justify-between px-4 lg:px-6">
           {/* 1. Logo Section */}
-          <div className="py-5">
+          <div className="">
             <Link href="/" className="group">
               <h1 className="text-3xl font-black tracking-tighter text-white uppercase italic">
                 Ga
@@ -59,7 +59,7 @@ const Navbar = () => {
               <li className="relative group">
                 <Link
                   href="/"
-                  className="bg-[#e53637] text-white py-8 px-8 block transition-all"
+                  className="bg-[#e53637] text-white py-6 px-8 block transition-all"
                 >
                   Home
                 </Link>
@@ -67,14 +67,9 @@ const Navbar = () => {
               <li className="group relative">
                 <Link
                   href="/games"
-                  className="flex items-center gap-1 text-white py-8 px-6 hover:text-[#e53637] transition"
+                  className="flex items-center gap-1 text-white py-6 px-6 hover:text-[#e53637] transition"
                 >
                   Game
-                  <Icon
-                    icon="iconamoon:arrow-down-2-light"
-                    width={18}
-                    className="group-hover:rotate-180 transition-transform"
-                  />
                 </Link>
                 {/* Simple Dropdown Indicator */}
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-[#e53637] group-hover:w-1/2 transition-all"></div>
@@ -82,7 +77,7 @@ const Navbar = () => {
               <li className="group relative">
                 <Link
                   href="/blog"
-                  className="text-white py-8 px-6 hover:text-[#e53637] transition"
+                  className="text-white py-6 px-6 hover:text-[#e53637] transition"
                 >
                   Our Blog
                 </Link>
@@ -91,7 +86,7 @@ const Navbar = () => {
               <li className="group relative">
                 <Link
                   href="/contact"
-                  className="text-white py-8 px-6 hover:text-[#e53637] transition"
+                  className="text-white py-6 px-6 hover:text-[#e53637] transition"
                 >
                   Contacts
                 </Link>
