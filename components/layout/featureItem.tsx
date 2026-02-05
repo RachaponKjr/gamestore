@@ -6,7 +6,7 @@ const FeatureItem = ({ icon, text }: { icon: string; text: string }) => (
     <div className="absolute inset-0 bg-[#e53637]/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
     <div
-      className="relative flex flex-col items-center justify-center gap-3 p-6 h-full
+      className="relative flex flex-col items-center justify-center gap-3 p-2 md:p-6 h-full
                     bg-white/3 backdrop-blur-2xl
                     rounded-2xl border border-white/10
                     border-t-[#e53637]/50 border-l-white/20
