@@ -4,8 +4,16 @@ import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import Policy from "./policy";
 
+interface Pack {
+  id: number;
+  amount: number;
+  price: number;
+  bonus: string;
+  popular: boolean;
+}
+
 const TopUpPage = () => {
-  const [selectedPack, setSelectedPack] = useState(null);
+  const [selectedPack, setSelectedPack] = useState<Pack | null>(null);
   const [selectedMethod, setSelectedMethod] = useState("");
 
   const packs = [
