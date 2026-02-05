@@ -9,7 +9,7 @@ export async function generateStaticParams() {
   }));
 }
 
-const page = () => {
+const page = ({ params }: { params: { slug: string } }) => {
   return <TopUpPage />;
 };
 
