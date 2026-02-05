@@ -15,6 +15,8 @@ const nextConfig: NextConfig = {
     ],
   },
   output: "export",
+  basePath: "/gamestore",
+  assetPrefix: "/gamestore",
 };
 
 export default nextConfig;
