@@ -11,7 +11,7 @@ const LayoutSection = ({
   return (
     <div className="flex flex-col bg-white min-h-screen">
       {/* ส่วน Banner: ใช้ sticky เพื่อให้เนื้อหาด้านล่างเลื่อนมาทับได้ */}
-      <div className="sticky top-0 w-full aspect-video md:aspect-16/5 bg-neutral-200 z-0">
+      <div className="sticky top-0 w-full aspect-16/13 md:aspect-16/6 bg-neutral-200 z-0">
         <video
           src={video}
           autoPlay
