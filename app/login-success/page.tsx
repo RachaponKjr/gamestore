@@ -1,19 +1,18 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, Suspense } from "react"; // เพิ่ม Suspense
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
-import { Loader2, CheckCircle2 } from "lucide-react"; // ใช้ lucide-react สำหรับไอคอน
+import { Loader2, CheckCircle2 } from "lucide-react";
 
-export default function LoginSuccess() {
+// 1. แยกส่วนที่ใช้ useSearchParams ออกมาเป็น Component ย่อย
+function LoginSuccessHandler() {
   const { login } = useAuth();
-  const searchParams = useSearchParams();
+  const searchParams = useSearchParams(); // ตัวนี้แหละครับที่ทำให้ Build พังถ้าไม่มี Suspense
   const router = useRouter();
   const [status, setStatus] = useState<"loading" | "success" | "error">(
     "loading",
   );
-
-  // ใช้ useRef เพื่อป้องกันการรันซ้ำ (Prevent double execution in Strict Mode)
   const isProcessed = useRef(false);
 
   useEffect(() => {
@@ -23,8 +22,7 @@ export default function LoginSuccess() {
     if (token) {
       isProcessed.current = true;
       try {
-        console.log("Token found, logging in...");
-        login(token); // มั่นใจว่าในฟังก์ชันนี้ไม่มีการสั่ง router.push ซ้อน
+        login(token);
         setStatus("success");
       } catch (err) {
         console.error("Login failed:", err);
@@ -38,8 +36,8 @@ export default function LoginSuccess() {
   useEffect(() => {
     if (status === "success") {
       const timer = setTimeout(() => {
-        console.log("Redirecting to home...");
-        window.location.href = "/"; // ใช้ window.location เพื่อล้าง State เก่าให้สะอาดที่สุด
+        // ใช้ window.location.href เพื่อล้าง State และ Reload Navbar ให้เป็นสถานะ Login ใหม่ชัวร์ที่สุด
+        window.location.href = "/";
       }, 2000);
       return () => clearTimeout(timer);
     } else if (status === "error") {
@@ -51,48 +49,61 @@ export default function LoginSuccess() {
   }, [status, router]);
 
   return (
+    <div className="max-w-md w-full p-8 text-center bg-[#151639] rounded-2xl border border-white/5 shadow-2xl">
+      {status === "loading" && (
+        <div className="flex flex-col items-center gap-4">
+          <Loader2 className="w-12 h-12 text-[#e53637] animate-spin" />
+          <h2 className="text-xl font-bold tracking-wider uppercase">
+            ยืนยันตัวตน...
+          </h2>
+          <p className="text-gray-400 text-sm">
+            กำลังเชื่อมต่อข้อมูลจาก Google
+          </p>
+        </div>
+      )}
+
+      {status === "success" && (
+        <div className="flex flex-col items-center gap-4 animate-in fade-in zoom-in duration-500">
+          <CheckCircle2 className="w-12 h-12 text-green-500" />
+          <h2 className="text-xl font-bold tracking-wider uppercase">
+            สำเร็จ!
+          </h2>
+          <p className="text-gray-400 text-sm">กำลังพาคุณกลับสู่หน้าหลัก</p>
+        </div>
+      )}
+
+      {status === "error" && (
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 text-[#e53637] flex items-center justify-center text-4xl">
+            !
+          </div>
+          <h2 className="text-xl font-bold uppercase text-[#e53637]">
+            เกิดข้อผิดพลาด
+          </h2>
+          <p className="text-gray-400 text-sm">ไม่พบข้อมูลการยืนยันตัวตน</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// 2. Component หลักสำหรับ Export
+export default function LoginSuccess() {
+  return (
     <div className="min-h-screen bg-[#0b0c2a] flex items-center justify-center text-white">
-      <div className="max-w-md w-full p-8 text-center">
-        {status === "loading" && (
-          <div className="flex flex-col items-center gap-4">
-            <Loader2 className="w-12 h-12 text-[#e53637] animate-spin" />
-            <h2 className="text-xl font-bold tracking-wider uppercase">
-              ยืนยันตัวตน...
-            </h2>
-            <p className="text-gray-400 text-sm">
-              กำลังเชื่อมต่อข้อมูลจาก Google
+      {/* ต้องหุ้มด้วย Suspense เพื่อแก้ปัญหา Prerender Error ตอน Build */}
+      <Suspense
+        fallback={
+          <div className="text-center">
+            <Loader2 className="w-12 h-12 text-[#e53637] animate-spin mx-auto" />
+            <p className="mt-4 font-bold uppercase tracking-widest">
+              Loading...
             </p>
           </div>
-        )}
-
-        {status === "success" && (
-          <div className="flex flex-col items-center gap-4 animate-in fade-in zoom-in duration-500">
-            <div className="bg-green-500/10 p-4 rounded-full">
-              <CheckCircle2 className="w-12 h-12 text-green-500" />
-            </div>
-            <h2 className="text-xl font-bold tracking-wider uppercase">
-              เข้าสู่ระบบสำเร็จ!
-            </h2>
-            <p className="text-gray-400 text-sm">ยินดีต้อนรับกลับเข้าสู่ระบบ</p>
-          </div>
-        )}
-
-        {status === "error" && (
-          <div className="flex flex-col items-center gap-4">
-            <div className="bg-red-500/10 p-4 rounded-full">
-              <div className="w-12 h-12 text-[#e53637] flex items-center justify-center text-4xl">
-                !
-              </div>
-            </div>
-            <h2 className="text-xl font-bold tracking-wider uppercase text-[#e53637]">
-              เกิดข้อผิดพลาด
-            </h2>
-            <p className="text-gray-400 text-sm">
-              ไม่พบข้อมูลการยืนยันตัวตน กรุณาลองใหม่อีกครั้ง
-            </p>
-          </div>
-        )}
-      </div>
+        }
+      >
+        <LoginSuccessHandler />
+      </Suspense>
     </div>
   );
 }
