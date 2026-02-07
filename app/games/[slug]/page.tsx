@@ -4,16 +4,16 @@ export const dynamicParams = true;
 export interface GameProps extends GameType {
   packages: GamePackageType[];
 }
+export const dynamic = "force-dynamic";
+// export async function generateStaticParams() {
+//   const games = await fetch(`http://localhost:3000/games`).then((res) =>
+//     res.json(),
+//   );
 
-export async function generateStaticParams() {
-  const games = await fetch(`http://localhost:3000/games`).then((res) =>
-    res.json(),
-  );
-
-  return games.data.map((game: GameType) => ({
-    slug: game.id,
-  }));
-}
+//   return games.data.map((game: GameType) => ({
+//     slug: game.id,
+//   }));
+// }
 
 const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
