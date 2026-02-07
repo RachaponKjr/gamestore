@@ -14,10 +14,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  output: "export",
-  basePath: "/gamestore",
-  assetPrefix: "/gamestore",
-  trailingSlash: true,
+  // output: "export",
+  // basePath: "/gamestore",
+  // assetPrefix: "/gamestore",
+  // trailingSlash: true,
 };
 
 export default nextConfig;

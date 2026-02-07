@@ -4,27 +4,14 @@ import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import Policy from "./policy";
 import Image from "next/image";
+import { GameProps } from "../page";
+import { GamePackageType } from "@/types/game.type";
 
-interface Pack {
-  id: number;
-  amount: number;
-  price: number;
-  bonus: string;
-  popular: boolean;
-}
-
-const TopUpPage = () => {
-  const [selectedPack, setSelectedPack] = useState<Pack | null>(null);
+const TopUpPage = ({ game }: { game: GameProps }) => {
+  const [selectedPack, setSelectedPack] = useState<GamePackageType | null>(
+    null,
+  );
   const [selectedMethod, setSelectedMethod] = useState("");
-
-  const packs = [
-    { id: 1, amount: 100, price: 35, bonus: "5", popular: false },
-    { id: 2, amount: 300, price: 100, bonus: "20", popular: true },
-    { id: 3, amount: 500, price: 165, bonus: "45", popular: false },
-    { id: 4, amount: 1000, price: 320, bonus: "100", popular: false },
-    { id: 5, amount: 2000, price: 630, bonus: "250", popular: false },
-    { id: 6, amount: 5000, price: 1550, bonus: "700", popular: false },
-  ];
 
   const paymentMethods = [
     {
@@ -52,14 +39,14 @@ const TopUpPage = () => {
     <LayoutSection video={"/mlbb.mp4"}>
       <div className="container mx-auto max-w-7xl py-6 px-4 text-[#0b0c2a]">
         {/* --- 1. Game Header Section --- */}
-        <div className="flex flex-col md:flex-row items-center md:items-end gap-6 mb-6 md:mb-10 bg-gradient-to-r from-[#0b0c2a] to-[#1a1c4e] p-8 rounded-[2.5rem] text-white overflow-hidden relative">
+        <div className="flex flex-col md:flex-row items-center md:items-end gap-6 mb-6 md:mb-10 bg-linear-to-r from-[#0b0c2a] to-[#1a1c4e] p-8 rounded-2xl text-white overflow-hidden relative">
           <div className="absolute top-0 right-0 opacity-10 translate-x-10 -translate-y-10">
             <Icon icon="mdi:controller" width={300} />
           </div>
 
-          <div className="w-32 h-32 relative md:w-40 md:h-40 rounded-3xl overflow-hidden border-4 border-white/20 shadow-md z-10">
+          <div className="w-32 h-32 relative md:w-40 md:h-40 rounded-2xl overflow-hidden border-4 border-white/20 shadow-md z-10">
             <Image
-              src=""
+              src={game.image || ""}
               alt="Game Logo"
               fill
               className="w-full h-full object-cover"
@@ -75,10 +62,12 @@ const TopUpPage = () => {
                 <Icon icon="material-symbols:star" />
                 <Icon icon="material-symbols:star" />
                 <Icon icon="material-symbols:star" />
+                <Icon icon="material-symbols:star" />
+                <Icon icon="material-symbols:star" />
               </div>
             </div>
             <h1 className="text-4xl md:text-5xl font-black italic tracking-tighter">
-              Mobile Legends: Bang Bang
+              {game.name}
             </h1>
             <p className="text-white/60 mt-2 flex items-center justify-center md:justify-start gap-4">
               <span className="flex items-center gap-1">
@@ -105,9 +94,9 @@ const TopUpPage = () => {
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                {packs.map((pack) => (
+                {game.packages.map((pack: GamePackageType, index: number) => (
                   <div
-                    key={pack.id}
+                    key={index}
                     onClick={() => setSelectedPack(pack)}
                     className={`relative p-5 rounded-2xl border-2 transition-all cursor-pointer flex flex-col items-center gap-1 group ${
                       selectedPack?.id === pack.id
@@ -115,7 +104,7 @@ const TopUpPage = () => {
                         : "border-gray-100 bg-white hover:border-gray-300 shadow-sm"
                     }`}
                   >
-                    {pack.popular && (
+                    {pack.recommend && (
                       <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#e53637] text-white text-[10px] px-3 py-1 rounded-full font-bold shadow-sm">
                         POPULAR
                       </span>
