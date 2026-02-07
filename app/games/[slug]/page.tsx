@@ -1,6 +1,6 @@
 import { GamePackageType, GameType } from "@/types/game.type";
 import TopUpPage from "./_components/topup";
-
+export const dynamicParams = true;
 export interface GameProps extends GameType {
   packages: GamePackageType[];
 }
